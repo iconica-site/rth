@@ -1,0 +1,88 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+.header {
+  font-family: variables.$font-secondary;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+
+  // .header__wrapper
+  &__wrapper {
+  }
+
+  // .header__container
+  &__container {
+  }
+
+  // .header__inner
+  &__inner {
+    display: flex;
+    align-items: center;
+    min-block-size: 123px;
+    padding-block: 10px;
+  }
+
+  // .header__nav
+  &__nav {
+    flex: 1 1 auto;
+  }
+}
+
+.header-nav {
+  // .header-nav__inner
+  &__inner {
+  }
+
+  // .header-nav__list
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+  }
+
+  // .header-nav__item
+  &__item {
+    // .header-nav__item--logo
+    &--logo {
+      flex: 1 1 auto;
+    }
+  }
+
+  // .header-nav__link
+  &__link {
+    @include mixins.prefers-reduced-motion {
+      transition-property: color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      color: variables.$color-accent;
+    }
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+
+  // .header-logo__icon
+  &__icon {
+    flex: 0 0 auto;
+    inline-size: 112px;
+    aspect-ratio: 112 / 80;
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      color: variables.$color-accent;
+    }
+  }
+}

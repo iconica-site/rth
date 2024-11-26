@@ -1,0 +1,56 @@
+:root {
+  // Global
+  --header-height: 123px;
+
+  // Fonts
+  --font-bebas-neue: "Bebas Neue", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-onest: "Onest", sans-serif;
+  --font-pf-din-text-comp-pro: "PF Din Text Comp Pro", sans-serif;
+
+  --font-primary: var(--font-onest);
+  --font-secondary: var(--font-bebas-neue);
+
+  // Colors
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-303030: #303030;
+  --color-232222: #232222;
+  --color-ae9a64: #ae9a64;
+  --color-141414: #141414;
+  --color-f4f3f1: #f4f3f1;
+
+  --color-4c4c4c: #4c4c4c;
+  --color-a3a3a3: #a3a3a3;
+  --color-ab9b6b: #ab9b6b;
+  --color-c5c5c5: #c5c5c5;
+  --color-aea789: #aea789;
+  --color-d8caa8: #d8caa8;
+  --color-171717: #171717;
+  --color-0a090b: #0a090b;
+  --color-e3ddd7: #e3ddd7;
+  --color-3ac9ed: #3ac9ed;
+  --color-7627b0: #7627b0;
+  --color-f6672d: #f6672d;
+  --color-e30316: #e30316;
+  --color-47b1fe: #47b1fe;
+  --color-f4ca99: #f4ca99;
+  --color-c8b399: #c8b399;
+  --color-90d0e0: #90d0e0;
+  --color-72d3eb: #72d3eb;
+  --color-602e86: #602e86;
+  --color-d9d9d9: #d9d9d9;
+
+  --color-303030-10: rgba(48, 48, 48, 0.1);
+
+  --color-primary: var(--color-303030);
+  --color-secondary: var(--color-232222);
+  --color-accent: var(--color-ae9a64);
+
+  --color-line: var(--color-141414);
+  --color-block-background: var(--color-f4f3f1);
+
+  --logo-icon-line-color: var(--color-accent);
+  --logo-icon-main-color: currentColor;
+}
