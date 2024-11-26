@@ -43,10 +43,12 @@
   --color-d9d9d9: #d9d9d9;
 
   --color-303030-10: rgba(48, 48, 48, 0.1);
+  --color-303030-0: rgba(48, 48, 48, 0);
 
   --color-primary: var(--color-303030);
   --color-secondary: var(--color-232222);
   --color-accent: var(--color-ae9a64);
+  --color-transparent: var(--color-303030-0);
 
   --color-line: var(--color-141414);
   --color-block-background: var(--color-f4f3f1);

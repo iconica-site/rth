@@ -1,0 +1,161 @@
+@use "../../../functions/functions";
+@use "../../../mixins/mixins";
+@use "../../../variables/variables";
+
+.faq {
+  padding-block: 150px 200px;
+
+  // .faq__container
+  &__container {
+  }
+
+  // .faq__label
+  &__label {
+    margin-block-end: 28px;
+  }
+
+  // .faq__title
+  &__title {
+    margin-block-end: 100px;
+    font-family: variables.$font-secondary;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+.faq-label {
+  position: relative;
+  inline-size: fit-content;
+  margin-inline: auto;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+
+  // .faq-label__text
+  &__text {
+    block-size: 364px;
+    font-family: variables.$font-secondary;
+    font-size: 490px;
+    line-height: 1;
+    color: variables.$color-transparent;
+    background: linear-gradient(to bottom, #e7e3d5 0%, rgba(231, 227, 213, 0) 100%);
+    background-clip: text;
+  }
+
+  // .faq-label__brand
+  &__brand {
+    position: absolute;
+    inset-block-end: 43px;
+    inset-inline: 0;
+    z-index: 1;
+  }
+}
+
+.faq-spoilers {
+  // .faq-spoilers__item
+  &__item {
+    border-block-start: 1px solid variables.$color-e3ddd7;
+  }
+
+  // .faq-spoilers__title
+  &__title {
+  }
+
+  // .faq-spoilers__button
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    inline-size: 100%;
+    min-block-size: 92px;
+    padding-block: 5px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: start;
+    color: variables.$color-171717;
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      color: variables.$color-accent;
+    }
+  }
+
+  // .faq-spoilers__label
+  &__label {
+  }
+
+  // .faq-spoilers__icon
+  &__icon {
+    position: relative;
+    flex: 0 0 auto;
+    font-size: 0;
+    inline-size: 24px;
+    aspect-ratio: 1 / 1;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      inline-size: 16px;
+      block-size: 2px;
+      background-color: variables.$color-0a090b;
+      border-radius: 4px;
+
+      @media (hover: hover) {
+        .faq-spoilers__button:hover & {
+          background-color: currentColor;
+        }
+      }
+    }
+
+    &::before {
+      transform: translate(-50%, -50%);
+
+      @include mixins.prefers-reduced-motion {
+        transition-property: background-color;
+        transition-duration: 0.3s;
+      }
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+
+      .spoiler-active & {
+        inline-size: 0;
+      }
+
+      @include mixins.prefers-reduced-motion {
+        transition-property: inline-size, background-color;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  // .faq-spoilers__region
+  &__region {
+  }
+
+  // .faq-spoilers__inner
+  &__inner {
+    padding-block-end: 32px;
+    padding-inline: 32px;
+  }
+
+  // .faq-spoilers__text
+  &__text {
+  }
+}
