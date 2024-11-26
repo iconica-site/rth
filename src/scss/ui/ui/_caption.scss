@@ -1,0 +1,16 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+.caption {
+  font-family: variables.$font-bebas-neue-book;
+  font-size: 40px;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  // .caption__bold
+  &__bold {
+    font-family: variables.$font-secondary;
+  }
+}

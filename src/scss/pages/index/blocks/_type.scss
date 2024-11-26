@@ -1,0 +1,111 @@
+@use "../../../functions/functions";
+@use "../../../mixins/mixins";
+@use "../../../variables/variables";
+
+.type {
+  padding-block: 150px;
+
+  // .type__container
+  &__container {
+  }
+
+  // .type__title
+  &__title {
+    max-inline-size: 375px;
+    margin-block-end: 40px;
+  }
+}
+
+.type-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+
+  // .type-list__item
+  &__item {
+  }
+}
+
+.type-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  block-size: 100%;
+  aspect-ratio: 240 / 400;
+  padding-block: 30px;
+  padding-inline: 16px;
+  font-family: variables.$font-bebas-neue-book;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: variables.$color-white;
+  border-radius: 2px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    z-index: -1;
+    block-size: 50%;
+    mask-image: linear-gradient(to top, #181818 55%, rgba(24, 24, 24, 0) 100%);
+    backdrop-filter: blur(40px);
+    transform: translateZ(0);
+  }
+
+  // .type-card__image
+  &__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    font-size: 0;
+  }
+
+  // .type-card__content
+  &__content {
+    block-size: var(--same-height);
+  }
+
+  // .type-card__link
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: fit-content;
+    min-block-size: 28px;
+    margin-block-start: 15px;
+    padding-block: 5px;
+    padding-inline: 16px;
+    font-family: variables.$font-secondary;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: variables.$color-white;
+    background-color: variables.$color-303030-70;
+    border-radius: 68px;
+    backdrop-filter: blur(34px);
+    transform: translateZ(0);
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: background-color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      background-color: variables.$color-accent;
+    }
+  }
+}
+
+.type-card-title {
+  // .type-card-title__bold
+  &__bold {
+    font-family: variables.$font-secondary;
+    font-weight: 700;
+  }
+}
