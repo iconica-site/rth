@@ -272,9 +272,9 @@
   // .studio__logo
   &__logo {
     flex: 0 0 auto;
-    font-size: 0;
     inline-size: 28px;
     aspect-ratio: 28 / 24;
+    font-size: 0;
 
     img {
       object-fit: contain;

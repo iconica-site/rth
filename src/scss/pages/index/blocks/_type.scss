@@ -52,9 +52,11 @@
     inset-inline: 0;
     z-index: -1;
     block-size: 50%;
+    font-size: 0;
     mask-image: linear-gradient(to top, #181818 55%, rgba(24, 24, 24, 0) 100%);
     backdrop-filter: blur(40px);
     transform: translateZ(0);
+    pointer-events: none;
   }
 
   // .type-card__image

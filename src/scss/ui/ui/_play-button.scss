@@ -1,0 +1,31 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+.play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  inline-size: 88px;
+  aspect-ratio: 1 / 1;
+  font-size: 0;
+  text-align: center;
+  background-color: variables.$color-000000-30;
+  border-radius: 50%;
+  backdrop-filter: blur(34px);
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: background-color;
+    transition-duration: 0.3s;
+  }
+
+  @include mixins.hover {
+    background-color: variables.$color-accent;
+  }
+
+  svg {
+    position: relative;
+    transform: translateX(3px);
+  }
+}
