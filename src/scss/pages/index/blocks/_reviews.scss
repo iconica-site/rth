@@ -1,0 +1,123 @@
+@use "../../../functions/functions";
+@use "../../../mixins/mixins";
+@use "../../../variables/variables";
+
+.reviews {
+  padding-block: 105px 80px;
+
+  // .reviews__container
+  &__container {
+  }
+
+  // .reviews__title
+  &__title {
+    margin-block-end: 50px;
+  }
+
+  // .reviews__row
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-block-end: 100px;
+  }
+
+  // .reviews__text
+  &__text {
+    max-inline-size: 520px;
+    font-family: variables.$font-bebas-neue;
+    font-size: 32px;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  // .reviews__slider
+  &__slider {
+  }
+}
+
+.reviews-slider {
+  // .reviews-slider__wrapper
+  &__wrapper {
+  }
+
+  // .reviews-slider__slide
+  &__slide {
+  }
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  block-size: 100%;
+  aspect-ratio: 240 / 400;
+  padding: 40px;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  color: variables.$color-white;
+  border-radius: 200px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    block-size: 32px;
+    flex: 0 0 auto;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+    opacity: 0.6;
+  }
+
+  // .review-card__button
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    inline-size: 88px;
+    aspect-ratio: 1 / 1;
+    font-size: 0;
+    background-color: variables.$color-000000-30;
+    border-radius: 50%;
+    backdrop-filter: blur(34px);
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: background-color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      background-color: variables.$color-accent;
+    }
+
+    svg {
+      position: relative;
+      transform: translateX(3px);
+    }
+  }
+
+  // .review-card__badge
+  &__badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    min-block-size: 32px;
+    padding-block: 5px;
+    padding-inline: 16px;
+    background-color: variables.$color-000000-30;
+    border-radius: 68px;
+    backdrop-filter: blur(34px);
+  }
+}

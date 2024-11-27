@@ -1,6 +1,8 @@
 import Swiper from "swiper";
 import { Keyboard, Navigation, Pagination, Scrollbar, } from "swiper/modules";
 
+import { formatPaginationFraction } from "../../../scripts/scripts/format-pagination-fraction.js";
+
 /** @type {HTMLDivElement} */
 const products = document.querySelector(".products");
 
@@ -72,9 +74,4 @@ function initProductsSlider() {
       });
     }
   }
-}
-
-/** @param {number} number */
-function formatPaginationFraction(number) {
-  return number < 10 ? `0${number}` : number;
 }
