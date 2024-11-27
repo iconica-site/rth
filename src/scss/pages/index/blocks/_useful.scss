@@ -1,0 +1,70 @@
+@use "../../../functions/functions";
+@use "../../../mixins/mixins";
+@use "../../../variables/variables";
+
+.useful {
+  padding-block: 100px 150px;
+  color: variables.$color-secondary;
+
+  // .useful__container
+  &__container {
+  }
+
+  // .useful__title
+  &__title {
+    margin-block-end: 200px;
+  }
+
+  // .useful__inner
+  &__inner {
+    display: grid;
+    grid-template-columns: calc(370 / 380 * 1fr) calc(400 / 380 * 1fr) calc(370 / 380 * 1fr);
+    gap: 70px;
+  }
+}
+
+.useful-title {
+  max-inline-size: 778px;
+  font-family: variables.$font-bebas-neue-book;
+  font-size: 112px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  // .useful-title__bold
+  &__bold {
+    font-family: variables.$font-secondary;
+  }
+}
+
+.useful-article {
+  &:first-child {
+    align-self: start;
+  }
+
+  &:last-child {
+    align-self: end;
+  }
+
+  // .useful-article__title
+  &__title {
+    margin-block-end: 40px;
+    font-family: variables.$font-secondary;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  // .useful-article__text
+  &__text {
+  }
+}
+
+.useful-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 400 / 650;
+  font-size: 0;
+  border-radius: 1000px;
+}
