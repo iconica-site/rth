@@ -1,0 +1,98 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+.slider-controllers {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+
+  &:has(.slider-controllers__arrow--prev.swiper-button-lock):has(
+      .slider-controllers__arrow--next.swiper-button-lock
+    ):has(.slider-controllers__pagination.swiper-pagination-lock):has(
+      .slider-controllers__scrollbar.swiper-scrollbar-lock
+    ) {
+    display: none;
+  }
+
+  // .slider-controllers__arrow
+  &__arrow {
+    flex: 0 0 auto;
+    font-size: 0;
+
+    // .slider-controllers__arrow--prev
+    &--prev {
+      order: -2;
+      margin-inline-end: 8px;
+    }
+
+    // .slider-controllers__arrow--next
+    &--next {
+      order: 2;
+      margin-inline-start: 8px;
+    }
+
+    &:not(&.swiper-button-disabled, &.swiper-button-lock) {
+      cursor: pointer;
+
+      @include mixins.hover {
+        color: variables.$color-accent;
+      }
+    }
+
+    &.swiper-button-disabled,
+    &.swiper-button-lock {
+      color: variables.$color-303030-20;
+    }
+
+    &.swiper-button-lock {
+      display: block;
+      pointer-events: none;
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: color;
+      transition-duration: 0.3s;
+    }
+  }
+
+  // .slider-controllers__pagination
+  &__pagination {
+    display: contents;
+
+    &.swiper-pagination-lock {
+      color: variables.$color-303030-20;
+    }
+
+    .swiper-pagination-current {
+      order: -1;
+    }
+
+    .swiper-pagination-total {
+      order: 1;
+      color: variables.$color-303030-20;
+    }
+  }
+
+  // .slider-controllers__scrollbar
+  &__scrollbar {
+    --swiper-scrollbar-drag-bg-color: #{variables.$color-d8caa8};
+
+    flex: 0 0 auto;
+    inline-size: 40px;
+    block-size: 1px;
+    font-size: 0;
+    background-color: variables.$color-303030-8;
+    border-radius: 10px;
+
+    &.swiper-scrollbar-lock {
+      --swiper-scrollbar-drag-bg-color: #{variables.$color-303030-20};
+
+      display: block !important;
+      pointer-events: none;
+    }
+  }
+}

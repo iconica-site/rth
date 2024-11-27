@@ -1,0 +1,1 @@
+import "./sliders/products.js";
