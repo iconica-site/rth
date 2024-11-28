@@ -1,0 +1,121 @@
+@use "../../../functions/functions";
+@use "../../../mixins/mixins";
+@use "../../../variables/variables";
+
+.advantages {
+  padding-block: 75px 165px;
+  font-family: variables.$font-secondary;
+  font-size: 172px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+
+  // .advantages__container
+  &__container {
+  }
+
+  // .advantages__inner
+  &__inner {
+    position: relative;
+    isolation: isolate;
+    padding-block-start: 183px;
+  }
+
+  // .advantages__text
+  &__text {
+  }
+
+  // .advantages__button
+  &__button {
+  }
+}
+
+.order-button {
+  position: absolute;
+  inset-block-end: -24.46px;
+  inset-inline-end: -43.17px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 147.42px;
+  aspect-ratio: 1 / 1;
+  counter-reset: index;
+  font-family: variables.$font-bebas-neue-book;
+  font-size: 16px;
+  color: variables.$color-secondary;
+  border-radius: 50%;
+  animation: order-button-rotate 60s linear infinite;
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: color;
+    transition-duration: 0.3s;
+  }
+
+  @include mixins.hover {
+    color: variables.$color-accent;
+  }
+
+  @keyframes order-button-rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  // .order-button__text
+  &__text {
+    position: absolute;
+    inset: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  // .order-button__icon
+  &__icon {
+    flex: 0 0 auto;
+    font-size: 0;
+    transform: rotate(-15deg);
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.advantages-decor {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: -29px;
+  inline-size: 662px;
+  aspect-ratio: 662 / 639;
+  pointer-events: none;
+
+  // .advantages-decor--back
+  &--back {
+    z-index: -1;
+    mix-blend-mode: plus-darker;
+    opacity: 0.5;
+  }
+
+  // .advantages-decor--front
+  &--front {
+    z-index: 1;
+  }
+
+  // .advantages-decor__image
+  &__image {
+    .advantages-decor--back & {
+      position: absolute;
+      inset: 0;
+    }
+
+    .advantages-decor--front & {
+      position: absolute;
+      inset-block: calc(-30.53 / 639 * 100%) calc(-69.47 / 639 * 100%);
+      inset-inline: calc(172.09 / 662 * 100%) calc(164.91 / 662 * 100%);
+      transform: rotate(-15deg);
+    }
+
+    img {
+      object-fit: contain;
+    }
+  }
+}
