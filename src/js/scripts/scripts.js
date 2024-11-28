@@ -4,3 +4,5 @@ import "./scripts/same.js";
 import "./scripts/about-text.js";
 import "./scripts/tabs.js";
 import "./scripts/spoilers.js";
+import "./scripts/range.js";
+import "./scripts/compare.js";

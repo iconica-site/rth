@@ -1,0 +1,66 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+@mixin range-thumb-styles {
+  inline-size: var(--range-thumb-width, var(--range-thumb-size));
+  block-size: var(--range-thumb-height, var(--range-thumb-size));
+  background-color: var(--range-thumb-background-color, var(--range-fill-color));
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 23 12'%3E%3Cpath stroke='%23303030' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6.6 11-5-5 5-5m10 0 5 5-5 5' /%3E%3C/svg%3E%0A");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 20px 10px;
+  border: none;
+  border-radius: 50%;
+  cursor: w-resize;
+  pointer-events: all;
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: background-color;
+    transition-duration: 0.3s;
+  }
+}
+
+@mixin range-thumb-hover {
+  background-color: variables.$color-accent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 23 12'%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6.6 11-5-5 5-5m10 0 5 5-5 5' /%3E%3C/svg%3E%0A");
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 23 12'%3E%3Cpath stroke='%23303030' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6.6 11-5-5 5-5m10 0 5 5-5 5' /%3E%3C/svg%3E%0A"),
+    w-resize;
+}
+
+.range {
+  --range-fill-position: calc(
+    var(--range-fill-value) * 1% - (var(--range-fill-value) - 50) * var(--range-thumb-width, var(--range-thumb-size)) /
+      100
+  );
+
+  appearance: none;
+  inline-size: 100%;
+  block-size: 8px;
+  background-color: var(--range-background-color);
+  background-image: linear-gradient(
+    to right,
+    var(--range-fill-color) var(--range-fill-position),
+    var(--range-background-color) var(--range-fill-position)
+  );
+  pointer-events: none;
+
+  @include mixins.hover {
+    &::-webkit-slider-thumb {
+      @include range-thumb-hover;
+    }
+
+    &::-moz-range-thumb {
+      @include range-thumb-hover;
+    }
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    @include range-thumb-styles;
+  }
+
+  &::-moz-range-thumb {
+    @include range-thumb-styles;
+  }
+}
