@@ -11,7 +11,7 @@ aboutTexts.forEach((aboutText, index, elements) => {
 
     setTimeout(() => {
       nextEl.dispatchEvent(new Event("animate"));
-    }, elements.length * 1000);
+    }, 4000);
   });
 
   if (aboutText.classList.contains("about-facts__text--active")) {
