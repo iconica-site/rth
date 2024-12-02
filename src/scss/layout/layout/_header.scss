@@ -3,16 +3,27 @@
 @use "../../variables/variables";
 
 .header {
-  position: relative;
-  z-index: 1;
   font-family: variables.$font-secondary;
   font-weight: 700;
-  font-size: 20px;
+  font-size: functions.responsive-value(20, 14, $end-breakpoint: 768);
   line-height: 1;
   letter-spacing: 0.02em;
 
   // .header__wrapper
   &__wrapper {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 100;
+
+    .scrolled & {
+      background-color: variables.$color-white;
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: background-color;
+      transition-duration: 0.3s;
+    }
   }
 
   // .header__container
@@ -22,9 +33,19 @@
   // .header__inner
   &__inner {
     display: flex;
+    gap: 16px;
     align-items: center;
-    min-block-size: 123px;
-    padding-block: 10px;
+    min-block-size: functions.responsive-value(123, 76, $end-breakpoint: 768, $behavior: "fixed-both");
+    padding-block: 5px;
+
+    @media (max-width: 768px) {
+      display: grid;
+      grid-template-columns: 40px 1fr 40px;
+
+      &::before {
+        content: "";
+      }
+    }
   }
 
   // .header__nav
@@ -33,7 +54,65 @@
   }
 }
 
+.burger-button {
+  position: relative;
+  aspect-ratio: 40 / 12;
+
+  @media (min-width: #{768 + 0.1px}) {
+    display: none;
+  }
+
+  // .burger-button__line
+  &__line {
+    position: absolute;
+    inset-inline-start: 50%;
+    inline-size: 100%;
+    block-size: 2px;
+    background-color: currentColor;
+    transform: translateX(-50%);
+
+    .burger-active & {
+      inline-size: 60%;
+    }
+
+    // .burger-button__line--top
+    &--top {
+      inset-block-start: 0;
+
+      .burger-active & {
+        inset-block-start: 50%;
+        transform: translate(-50%, -50%) rotate(135deg);
+      }
+    }
+
+    // .burger-button__line--bottom
+    &--bottom {
+      inset-block-end: 0;
+
+      .burger-active & {
+        inset-block-end: 50%;
+        transform: translate(-50%, 50%) rotate(-135deg);
+      }
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: inset-block, inline-size, color, transform;
+      transition-duration: 0.3s;
+    }
+
+    @media (hover: hover) {
+      .burger-button:hover & {
+        color: variables.$color-accent;
+      }
+    }
+  }
+}
+
 .header-nav {
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   // .header-nav__inner
   &__inner {
   }
@@ -42,7 +121,7 @@
   &__list {
     display: flex;
     align-items: center;
-    gap: 54px;
+    gap: functions.responsive-value(54, 16, $end-breakpoint: 768);
   }
 
   // .header-nav__item
@@ -50,6 +129,10 @@
     // .header-nav__item--logo
     &--logo {
       flex: 1 1 auto;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
   }
 
@@ -72,10 +155,16 @@
   justify-content: center;
   font-size: 0;
 
+  .header__inner > & {
+    @media (min-width: #{768 + 0.1px}) {
+      display: none;
+    }
+  }
+
   // .header-logo__icon
   &__icon {
     flex: 0 0 auto;
-    inline-size: 112px;
+    inline-size: functions.responsive-value(112, 84, $end-breakpoint: 768, $behavior: "fixed-both");
     aspect-ratio: 112 / 80;
 
     @include mixins.prefers-reduced-motion {

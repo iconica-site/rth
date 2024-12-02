@@ -1,6 +1,6 @@
 :root {
   // Global
-  --header-height: 123px;
+  --header-height: clamp(76px, 76px + 47 * ((100vw - 768px) / 544), 123px);
 
   // Fonts
   --font-bebas-neue: "Bebas Neue", sans-serif;

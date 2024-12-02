@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="icon-down" viewBox="0 0 16 16" fill="none">
+    <path stroke-linecap="round" stroke-linejoin="round" d="m3 6 5 4.6L13 6" />
+  </symbol>
   <symbol id="icon-drag" viewBox="0 0 23 12" fill="none">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6.6 11-5-5 5-5m10 0 5 5-5 5" />
   </symbol>
@@ -21,6 +24,9 @@
   </symbol>
   <symbol id="icon-long-arrow" viewBox="0 0 55 11" stroke="none">
     <path d="M54.422 6.286a.708.708 0 0 0 0-1.001L49.917.78a.708.708 0 1 0-1.001 1.001l4.004 4.004-4.004 4.004a.708.708 0 1 0 1.001 1.001l4.505-4.504ZM.125 6.493h53.796V5.077H.125v1.416Z" />
+  </symbol>
+  <symbol id="icon-more-arrow" viewBox="0 0 24 24" fill="none">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17 17 7m0 0H7m10 0v10" />
   </symbol>
   <symbol id="icon-next" viewBox="0 0 24 24" fill="none">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="m13.3 5 6.7 7m0 0-6.7 7m6.7-7H4" />
