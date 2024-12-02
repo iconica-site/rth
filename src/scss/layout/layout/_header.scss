@@ -3,6 +3,8 @@
 @use "../../variables/variables";
 
 .header {
+  position: relative;
+  z-index: 1;
   font-family: variables.$font-secondary;
   font-weight: 700;
   font-size: 20px;
