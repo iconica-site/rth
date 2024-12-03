@@ -3,7 +3,7 @@
 @use "../../../variables/variables";
 
 .type {
-  padding-block: 150px;
+  padding-block: functions.responsive-value(150, 80);
 
   // .type__container
   &__container {
@@ -11,18 +11,42 @@
 
   // .type__title
   &__title {
-    max-inline-size: 375px;
     margin-block-end: 40px;
+
+    @media (min-width: #{768 + 0.1px}) {
+      max-inline-size: 375px;
+    }
   }
 }
 
-.type-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+.type-title {
+  font-family: variables.$font-secondary;
+  font-size: functions.responsive-value(40, 32);
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 
-  // .type-list__item
-  &__item {
+  @media (min-width: #{768 + 0.1px}) {
+    font-family: variables.$font-bebas-neue-book;
+  }
+
+  // .type-title__bold
+  &__bold {
+    @media (min-width: #{768 + 0.1px}) {
+      font-family: variables.$font-secondary;
+    }
+  }
+}
+
+.type-slider {
+  overflow: visible;
+
+  // .type-slider__wrapper
+  &__wrapper {
+  }
+
+  // .type-slider__slide
+  &__slide {
   }
 }
 
@@ -33,17 +57,21 @@
   flex-direction: column;
   justify-content: end;
   block-size: 100%;
-  aspect-ratio: 240 / 400;
-  padding-block: 30px;
-  padding-inline: 16px;
+  aspect-ratio: 160 / 240;
+  padding-block: functions.responsive-value(30, 20);
+  padding-inline: functions.responsive-value(16, 8);
   font-family: variables.$font-bebas-neue-book;
-  font-size: 32px;
+  font-size: functions.responsive-value(32, 20);
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: variables.$color-white;
-  border-radius: 2px;
+  border-radius: functions.responsive-value(2, 1);
   overflow: hidden;
+
+  @media (min-width: #{768 + 0.1px}) {
+    aspect-ratio: 240 / 400;
+  }
 
   &::after {
     content: "";
@@ -54,7 +82,7 @@
     block-size: 50%;
     font-size: 0;
     mask-image: linear-gradient(to top, #181818 55%, rgba(24, 24, 24, 0) 100%);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(functions.responsive-value(40, 20));
     transform: translateZ(0);
     pointer-events: none;
   }
@@ -100,6 +128,10 @@
 
     @include mixins.hover {
       background-color: variables.$color-accent;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 }

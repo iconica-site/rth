@@ -11,12 +11,14 @@
 
   // .title__bold
   &__bold {
-    font-family: variables.$font-secondary;
+    &:not(&--pc) {
+      font-family: variables.$font-secondary;
+    }
 
     // .title__bold--pc
     &--pc {
-      @media (max-width: 768px) {
-        font-family: variables.$font-bebas-neue-book;
+      @media (min-width: #{768 + 0.1px}) {
+        font-family: variables.$font-secondary;
       }
     }
   }
