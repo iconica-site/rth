@@ -140,6 +140,10 @@
 
   // .header-nav__link
   &__link {
+    &.active {
+      color: variables.$color-accent;
+    }
+
     @include mixins.prefers-reduced-motion {
       transition-property: color;
       transition-duration: 0.3s;

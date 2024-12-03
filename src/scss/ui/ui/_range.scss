@@ -13,7 +13,6 @@
   border: none;
   border-radius: 50%;
   cursor: w-resize;
-  pointer-events: all;
 
   @include mixins.prefers-reduced-motion {
     transition-property: background-color;
@@ -35,31 +34,28 @@
 
   appearance: none;
   inline-size: 100%;
-  block-size: 8px;
+  block-size: 100%;
   background-color: var(--range-background-color);
   background-image: linear-gradient(
     to right,
     var(--range-fill-color) var(--range-fill-position),
     var(--range-background-color) var(--range-fill-position)
   );
-  pointer-events: none;
-
-  @include mixins.hover {
-    &::-webkit-slider-thumb {
-      @include range-thumb-hover;
-    }
-
-    &::-moz-range-thumb {
-      @include range-thumb-hover;
-    }
-  }
 
   &::-webkit-slider-thumb {
     appearance: none;
     @include range-thumb-styles;
+
+    @include mixins.hover {
+      @include range-thumb-hover;
+    }
   }
 
   &::-moz-range-thumb {
     @include range-thumb-styles;
+
+    @include mixins.hover {
+      @include range-thumb-hover;
+    }
   }
 }

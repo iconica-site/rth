@@ -1,5 +1,6 @@
 import "./scripts/header-observers.js";
 import "./scripts/burger.js";
+import "./scripts/goto.js";
 import "./scripts/move.js";
 import "./scripts/same.js";
 import "./scripts/about-text.js";

@@ -123,14 +123,6 @@
     border-radius: 2px;
   }
 
-  @media (hover: hover) {
-    &:has(.compare-images__range:hover) {
-      &::after {
-        background-color: variables.$color-accent;
-      }
-    }
-  }
-
   &::after {
     content: "";
     position: absolute;
