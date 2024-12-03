@@ -3,9 +3,9 @@
 @use "../../../variables/variables";
 
 .advantages {
-  padding-block: 75px 165px;
+  padding-block: functions.responsive-value(260, 40) functions.responsive-value(165, 80);
   font-family: variables.$font-secondary;
-  font-size: 172px;
+  font-size: functions.responsive-value(172, 64);
   line-height: 1;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -18,7 +18,6 @@
   &__inner {
     position: relative;
     isolation: isolate;
-    padding-block-start: 183px;
   }
 
   // .advantages__text
@@ -27,13 +26,47 @@
 
   // .advantages__button
   &__button {
+    --outline-color: #{variables.$color-primary};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: fit-content;
+    min-block-size: 48px;
+    padding-block: 5px;
+    padding-inline: 42px;
+    margin-block-start: 80px;
+    font-size: 14px;
+    text-align: center;
+    color: variables.$color-white;
+    background-color: variables.$color-primary;
+    border-radius: 68px;
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: background-color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      background-color: variables.$color-accent;
+    }
+
+    @media (min-width: #{768 + 0.1px}) {
+      display: none;
+    }
   }
 }
 
 .order-button {
   position: absolute;
   inset-block-end: -24.46px;
-  inset-inline-end: -43.17px;
+  inset-inline-end: functions.responsive-value(
+    -43.17,
+    0,
+    $start-breakpoint: 1728,
+    $end-breakpoint: 1312,
+    $behavior: "fixed-both"
+  );
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -54,6 +87,10 @@
 
   @include mixins.hover {
     color: variables.$color-accent;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 
   @keyframes order-button-rotate {
@@ -82,9 +119,9 @@
 
 .advantages-decor {
   position: absolute;
-  inset-block-start: 0;
-  inset-inline-end: -29px;
-  inline-size: 662px;
+  inset-block-start: functions.responsive-value(-183, 65, $behavior: "fixed-both");
+  inset-inline-end: functions.responsive-value(-29, -38.14);
+  inline-size: functions.responsive-value(662, 293.14);
   aspect-ratio: 662 / 639;
   pointer-events: none;
 
