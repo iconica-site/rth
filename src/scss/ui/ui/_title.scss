@@ -4,7 +4,7 @@
 
 .title {
   font-family: variables.$font-bebas-neue-book;
-  font-size: 96px;
+  font-size: functions.responsive-value(96, 48);
   line-height: 1;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -12,5 +12,12 @@
   // .title__bold
   &__bold {
     font-family: variables.$font-secondary;
+
+    // .title__bold--pc
+    &--pc {
+      @media (max-width: 768px) {
+        font-family: variables.$font-bebas-neue-book;
+      }
+    }
   }
 }

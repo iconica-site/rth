@@ -9,7 +9,7 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 23 12'%3E%3Cpath stroke='%23303030' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6.6 11-5-5 5-5m10 0 5 5-5 5' /%3E%3C/svg%3E%0A");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 20px 10px;
+  background-size: functions.responsive-value(20, 10) functions.responsive-value(10, 5);
   border: none;
   border-radius: 50%;
   cursor: w-resize;
@@ -24,8 +24,7 @@
 @mixin range-thumb-hover {
   background-color: variables.$color-accent;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 23 12'%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6.6 11-5-5 5-5m10 0 5 5-5 5' /%3E%3C/svg%3E%0A");
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 23 12'%3E%3Cpath stroke='%23303030' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6.6 11-5-5 5-5m10 0 5 5-5 5' /%3E%3C/svg%3E%0A"),
-    w-resize;
+  cursor: w-resize;
 }
 
 .range {
