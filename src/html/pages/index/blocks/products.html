@@ -10,10 +10,20 @@
         <div class="gender__panel" data-panel="woman">
           <div class="types" data-tabs="types">
             <div class="types__header">
-              <div class="types__buttons" data-buttons="types">
-                <button class="types__tab active" data-tab="normal">Для нормальных волос</button>
-                <button class="types__tab" data-tab="dyed">Для окрашенных волос</button>
-                <button class="types__tab" data-tab="brittle">Для сухих и ломких волос</button>
+              <div class="types-buttons">
+                <button class="types-select">
+                  <span class="types-select__text">Для нормальных волос</span>
+                  <span class="types-select__icon" aria-hidden="true">
+                    <svg width="16" height="16">
+                      <use xlink:href="#icon-down"></use>
+                    </svg>
+                  </span>
+                </button>
+                <div class="types-buttons__inner" data-buttons="types">
+                  <button class="types-buttons__tab active" data-tab="normal">Для нормальных волос</button>
+                  <button class="types-buttons__tab" data-tab="dyed">Для окрашенных волос</button>
+                  <button class="types-buttons__tab" data-tab="brittle">Для сухих и ломких волос</button>
+                </div>
               </div>
               @@include("../../../ui/slider-controllers.html")
             </div>
@@ -231,16 +241,27 @@
                   </div>
                 </div>
               </div>
+              <div class="types__controllers"></div>
             </div>
           </div>
         </div>
         <div class="gender__panel" data-panel="man" hidden>
           <div class="types" data-tabs="types">
             <div class="types__header">
-              <div class="types__buttons" data-buttons="types">
-                <button class="types__tab active" data-tab="normal">Для нормальных волос</button>
-                <button class="types__tab" data-tab="dyed">Для окрашенных волос</button>
-                <button class="types__tab" data-tab="brittle">Для сухих и ломких волос</button>
+              <div class="types-buttons">
+                <button class="types-select">
+                  <span class="types-select__text">Для нормальных волос</span>
+                  <span class="types-select__icon" aria-hidden="true">
+                    <svg width="16" height="16">
+                      <use xlink:href="#icon-down"></use>
+                    </svg>
+                  </span>
+                </button>
+                <div class="types-buttons__inner" data-buttons="types">
+                  <button class="types-buttons__tab active" data-tab="normal">Для нормальных волос</button>
+                  <button class="types-buttons__tab" data-tab="dyed">Для окрашенных волос</button>
+                  <button class="types-buttons__tab" data-tab="brittle">Для сухих и ломких волос</button>
+                </div>
               </div>
               @@include("../../../ui/slider-controllers.html")
             </div>
@@ -518,6 +539,7 @@
                   </div>
                 </div>
               </div>
+              <div class="types__controllers"></div>
             </div>
           </div>
         </div>

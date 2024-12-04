@@ -7,8 +7,26 @@ const headerLogoContainer = document.querySelector(".header__inner");
 
 if (headerLogoMain && headerLogoContainer) {
   const move = new Move({
-    destinationSelector: ".header__inner",
-    targetSelector: ".header-logo",
+    destination: headerLogoContainer,
+    target: headerLogoMain,
     index: "first",
   });
 }
+
+/** @type {NodeListOf<HTMLDivElement>} */
+const productTypes = document.querySelectorAll(".types");
+
+productTypes.forEach((productType) => {
+  /** @type {HTMLDivElement} */
+  const productsSliderControllersMain = productType.querySelector(".slider-controllers");
+  /** @type {HTMLDivElement} */
+  const productsSliderControllersContainer = productType.querySelector(".types__controllers");
+
+  if (productsSliderControllersMain && productsSliderControllersContainer) {
+    const move = new Move({
+      destination: productsSliderControllersContainer,
+      target: productsSliderControllersMain,
+      breakpoint: 500,
+    });
+  }
+});

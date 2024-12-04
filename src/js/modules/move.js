@@ -11,8 +11,8 @@ class Move {
 
   /** @param {MoveOptions} options */
   constructor(options) {
-    this.#$destination = document.querySelector(options.destinationSelector);
-    this.#$target = document.querySelector(options.targetSelector);
+    this.#$destination = options.destination instanceof Element ? options.destination : document.querySelector(options.destination);
+    this.#$target = options.target instanceof Element ? options.target : document.querySelector(options.target);
 
     if (this.#$destination && this.#$target) {
       this.#breakpoint = options.breakpoint ?? 768;

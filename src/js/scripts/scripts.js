@@ -8,4 +8,5 @@ import "./scripts/components.js";
 import "./scripts/range.js";
 import "./scripts/compare.js";
 import "./scripts/tabs.js";
+import "./scripts/products-select.js";
 import "./scripts/spoilers.js";

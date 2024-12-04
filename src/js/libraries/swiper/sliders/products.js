@@ -30,7 +30,15 @@ function initProductsSlider() {
 
     if (productsSlider) {
       swiper = initSlider(activeGenderPanel, productsSlider, {
-        slidesPerView: 3,
+        breakpoints: {
+          "500.1": {
+            slidesPerView: 2,
+          },
+          "768.1": {
+            slidesPerView: 3,
+          },
+        },
+        slidesPerView: 1,
         spaceBetween: 21,
         rewind: true,
       });
