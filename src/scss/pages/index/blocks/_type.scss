@@ -39,7 +39,9 @@
 }
 
 .type-slider {
-  overflow: visible;
+  @media (max-width: 1312px) {
+    overflow: visible;
+  }
 
   // .type-slider__wrapper
   &__wrapper {

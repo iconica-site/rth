@@ -3,7 +3,7 @@
 @use "../../../variables/variables";
 
 .reviews {
-  padding-block: 105px 80px;
+  padding-block: functions.responsive-value(105, 40) functions.responsive-value(80, 40);
 
   // .reviews__container
   &__container {
@@ -11,7 +11,7 @@
 
   // .reviews__title
   &__title {
-    margin-block-end: 50px;
+    margin-block-end: functions.responsive-value(50, 40);
   }
 
   // .reviews__row
@@ -19,26 +19,41 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
-    margin-block-end: 100px;
+    gap: functions.responsive-value(40, 16);
+    margin-block-end: functions.responsive-value(100, 55);
+
+    .slider-controllers {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
   }
 
   // .reviews__text
   &__text {
-    max-inline-size: 520px;
     font-family: variables.$font-bebas-neue;
-    font-size: 32px;
+    font-size: functions.responsive-value(32, 20);
     line-height: 1.08;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-  }
 
-  // .reviews__slider
-  &__slider {
+    @media (min-width: #{768 + 0.1px}) {
+      max-inline-size: 520px;
+    }
+
+    br {
+      @media (min-width: #{768 + 0.1px}) {
+        display: none;
+      }
+    }
   }
 }
 
 .reviews-slider {
+  @media (max-width: 1312px) {
+    overflow: visible;
+  }
+
   // .reviews-slider__wrapper
   &__wrapper {
   }
@@ -49,20 +64,27 @@
 }
 
 .review-card {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: functions.responsive-value(40, 16);
   block-size: 100%;
-  aspect-ratio: 240 / 400;
-  padding: 40px;
-  font-size: 14px;
+  aspect-ratio: 230.4 / 379.72;
+  padding: functions.responsive-value(40, 35);
+  font-size: 17px;
   line-height: 1;
   text-align: center;
   color: variables.$color-white;
-  border-radius: 200px;
+  border-radius: functions.responsive-value(200, 144);
   overflow: hidden;
+
+  @media (min-width: #{768 + 0.1px}) {
+    aspect-ratio: 240 / 400;
+    font-size: 14px;
+  }
 
   &::before {
     content: "";
@@ -83,7 +105,11 @@
     pointer-events: none;
   }
 
-  img {
+  // .review-card__video
+  &__video {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
     font-size: 0;
   }
 
@@ -95,9 +121,9 @@
     flex: 0 0 auto;
     min-block-size: 32px;
     padding-block: 5px;
-    padding-inline: 16px;
+    padding-inline: functions.responsive-value(16, 12);
     background-color: variables.$color-000000-30;
-    border-radius: 68px;
-    backdrop-filter: blur(34px);
+    border-radius: functions.responsive-value(68, 49);
+    backdrop-filter: blur(functions.responsive-value(34, 24));
   }
 }

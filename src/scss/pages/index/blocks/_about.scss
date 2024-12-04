@@ -70,29 +70,6 @@
     inset-block-start: calc(279 / 837 * 100%);
     inset-inline-end: calc(109 / 674 * 100%);
     z-index: 1;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      border: 1px solid variables.$color-ab9b6b;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: play-button-pulse 2s linear infinite;
-    }
-
-    &::after {
-      animation-delay: 1s;
-    }
-
-    @keyframes play-button-pulse {
-      to {
-        border: 1px solid variables.$color-transparent;
-        transform: scale(calc(110 / 88));
-      }
-    }
   }
 }
 
