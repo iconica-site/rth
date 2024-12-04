@@ -40,6 +40,10 @@
     min-block-size: functions.responsive-value(123, 76, $end-breakpoint: 768, $behavior: "fixed-both");
     padding-block: 5px;
 
+    .scrolled & {
+      min-block-size: functions.responsive-value(61.5, 38, $end-breakpoint: 768, $behavior: "fixed-both");
+    }
+
     @media (max-width: 768px) {
       display: grid;
       grid-template-columns: 40px 1fr 40px;
@@ -172,6 +176,10 @@
     flex: 0 0 auto;
     inline-size: functions.responsive-value(112, 84, $end-breakpoint: 768, $behavior: "fixed-both");
     aspect-ratio: 112 / 80;
+
+    .scrolled & {
+      inline-size: functions.responsive-value(61, 42, $end-breakpoint: 768, $behavior: "fixed-both");
+    }
 
     @include mixins.prefers-reduced-motion {
       transition-property: color;

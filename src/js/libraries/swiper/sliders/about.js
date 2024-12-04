@@ -27,5 +27,20 @@ if (aboutSlider) {
     direction: "horizontal",
     speed: 300,
     rewind: true,
+    allowTouchMove: false,
   });
+
+  const aboutSliderIntersectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+
+      if (isIntersecting) {
+        swiper.autoplay.start();
+      } else {
+        swiper.autoplay.stop();
+      }
+    });
+  });
+
+  aboutSliderIntersectionObserver.observe(aboutSlider);
 }
