@@ -5,6 +5,10 @@
 .reviews {
   padding-block: functions.responsive-value(105, 40) functions.responsive-value(80, 40);
 
+  &:not(.section--animate) {
+    pointer-events: none;
+  }
+
   // .reviews__container
   &__container {
   }
@@ -12,6 +16,17 @@
   // .reviews__title
   &__title {
     margin-block-end: functions.responsive-value(50, 40);
+
+    .section:not(.section--animate) & {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: opacity, transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
   }
 
   // .reviews__row
@@ -21,6 +36,17 @@
     justify-content: space-between;
     gap: functions.responsive-value(40, 16);
     margin-block-end: functions.responsive-value(100, 55);
+
+    .section:not(.section--animate) & {
+      opacity: 0;
+      transform: translateY(120px);
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: opacity, transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
 
     .slider-controllers {
       @media (max-width: 768px) {
@@ -50,6 +76,17 @@
 }
 
 .reviews-slider {
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(160px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
   @media (max-width: 1312px) {
     overflow: visible;
   }

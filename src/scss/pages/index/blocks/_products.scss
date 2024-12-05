@@ -5,6 +5,10 @@
 .products {
   padding-block: functions.responsive-value(120, 40) functions.responsive-value(105, 30);
 
+  &:not(.section--animate) {
+    pointer-events: none;
+  }
+
   // .products__container
   &__container {
   }
@@ -12,10 +16,32 @@
   // .products__title
   &__title {
     margin-block-end: functions.responsive-value(80, 40);
+
+    .section:not(.section--animate) & {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: opacity, transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
   }
 }
 
 .gender {
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(160px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
   // .gender__buttons
   &__buttons {
     display: flex;
@@ -131,8 +157,28 @@
     padding: 2px;
 
     @media (min-width: #{992 + 0.1px}) {
+      position: relative;
+      isolation: isolate;
       border: 1px solid variables.$color-black;
       border-radius: 70px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-block: 2px;
+        inset-inline-start: var(--active-types-tab-left);
+        z-index: -1;
+        inline-size: var(--active-types-tab-width);
+        font-size: 0;
+        background-color: variables.$color-secondary;
+        border-radius: 68px;
+        pointer-events: none;
+
+        @include mixins.prefers-reduced-motion {
+          transition-property: inset-inline-start, inline-size;
+          transition-duration: 0.3s;
+        }
+      }
     }
 
     @media (max-width: 992px) {
@@ -169,14 +215,19 @@
     line-height: 1;
     text-align: center;
     color: variables.$color-secondary;
-    background-color: variables.$color-white;
     border-radius: 3px;
+
+    &:not(.active) {
+      @include mixins.hover {
+        color: variables.$color-232222-20;
+      }
+    }
 
     &.active {
       --outline-color: #{variables.$color-primary};
 
       color: variables.$color-white;
-      background-color: variables.$color-secondary;
+      // background-color: variables.$color-secondary;
 
       @media (max-width: 992px) {
         display: none;
@@ -184,13 +235,8 @@
     }
 
     @include mixins.prefers-reduced-motion {
-      transition-property: color, background-color;
+      transition-property: color;
       transition-duration: 0.3s;
-    }
-
-    @include mixins.hover {
-      color: variables.$color-white;
-      background-color: variables.$color-accent;
     }
 
     @media (min-width: #{992 + 0.1px}) {

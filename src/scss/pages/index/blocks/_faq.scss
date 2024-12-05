@@ -5,6 +5,10 @@
 .faq {
   padding-block: functions.responsive-value(150, 85) functions.responsive-value(200, 80);
 
+  &:not(.section--animate) {
+    pointer-events: none;
+  }
+
   // .faq__container
   &__container {
   }
@@ -28,6 +32,17 @@
     text-transform: uppercase;
     text-align: center;
 
+    .section:not(.section--animate) & {
+      opacity: 0;
+      transform: translateY(120px);
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: opacity, transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
+
     @media (max-width: 768px) {
       letter-spacing: 0.01em;
     }
@@ -40,6 +55,17 @@
   text-align: center;
   user-select: none;
   pointer-events: none;
+
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
 
   @media (min-width: #{768 + 0.1px}) {
     position: relative;
@@ -78,6 +104,17 @@
 }
 
 .faq-spoilers {
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(160px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
   // .faq-spoilers__item
   &__item {
     border-block-start: 1px solid variables.$color-e3ddd7;

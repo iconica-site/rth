@@ -6,6 +6,10 @@
   padding-block: functions.responsive-value(100, 40) functions.responsive-value(150, 40);
   color: variables.$color-secondary;
 
+  &:not(.section--animate) {
+    pointer-events: none;
+  }
+
   // .useful__container
   &__container {
     container-type: inline-size;
@@ -24,6 +28,17 @@
   line-height: 1;
   text-transform: uppercase;
 
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
   // .useful-title__bold
   &__bold {
     font-family: variables.$font-secondary;
@@ -31,6 +46,17 @@
 }
 
 .useful-slider {
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(160px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
   @media (min-width: #{420 + 0.1px}) {
     --gap-sum: 16px;
     --slides-count: 2;

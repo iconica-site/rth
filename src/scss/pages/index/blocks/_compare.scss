@@ -5,6 +5,10 @@
 .compare {
   padding-block: functions.responsive-value(155, 40) functions.responsive-value(120, 40);
 
+  &:not(.section--animate) {
+    pointer-events: none;
+  }
+
   // .compare__container
   &__container {
   }
@@ -12,6 +16,17 @@
   // .compare__title
   &__title {
     margin-block-end: functions.responsive-value(50, 40);
+
+    .section:not(.section--animate) & {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: opacity, transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
   }
 }
 
@@ -22,6 +37,17 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-align: center;
+
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(160px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
 
   > *:last-child {
     margin-block-end: 0;

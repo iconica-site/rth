@@ -3,11 +3,36 @@
 @use "../../../variables/variables";
 
 .about {
+  position: relative;
+  isolation: isolate;
   padding-block: functions.responsive-value(150, 75) 80px;
-  background-image: linear-gradient(180deg, #f4f3f1 0%, rgba(244, 243, 241, 0) 50%);
+
+  &:not(.section--animate) {
+    pointer-events: none;
+
+    &::after {
+      opacity: 0;
+    }
+  }
 
   @media (min-width: #{768 + 0.1px}) {
     padding-block-end: 70px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    font-size: 0;
+    background-image: linear-gradient(180deg, #f4f3f1 0%, rgba(244, 243, 241, 0) 50%);
+    pointer-events: none;
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: opacity;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
   }
 
   // .about__inner
@@ -22,10 +47,32 @@
   // .about__title
   &__title {
     max-inline-size: 890px;
+
+    .section:not(.section--animate) & {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: opacity, transform;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
   }
 }
 
 .about-inner {
+  .section:not(.section--animate) & {
+    opacity: 0;
+    transform: translateY(160px);
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
   // .about-inner__container
   &__container {
     max-inline-size: #{variables.$container + 100px};
@@ -77,11 +124,15 @@
 
 .about-slider {
   font-family: variables.$font-bebas-neue-book;
-  font-size: functions.responsive-value(40, 20, $end-breakpoint: 992, $behavior: "fixed-both");
+  font-size: functions.responsive-value(20, 12, $start-breakpoint: 440, $end-breakpoint: 280);
   line-height: 1.08;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: variables.$color-303030-30;
+
+  @media (min-width: #{400 + 0.1px}) {
+    font-size: functions.responsive-value(40, 20, $end-breakpoint: 992, $behavior: "fixed-both");
+  }
 
   @media (min-width: #{1312 + 0.1px}) {
     padding-block: 60px;
@@ -119,10 +170,14 @@
 
 .about-fact {
   .swiper-slide-active & {
-    font-size: functions.responsive-value(66, 48, $end-breakpoint: 992, $behavior: "fixed-both");
+    font-size: functions.responsive-value(28, 16, $start-breakpoint: 440, $end-breakpoint: 280);
     line-height: 1;
     letter-spacing: 0.01em;
     color: variables.$color-primary;
+
+    @media (min-width: #{400 + 0.1px}) {
+      font-size: functions.responsive-value(66, 28, $end-breakpoint: 992, $behavior: "fixed-both");
+    }
 
     @media (min-width: #{1312 + 0.1px}) {
       padding-block: 40px;

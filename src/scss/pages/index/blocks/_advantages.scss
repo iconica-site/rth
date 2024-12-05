@@ -10,6 +10,18 @@
   letter-spacing: 0.01em;
   text-transform: uppercase;
 
+  &:not(.section--animate) {
+    opacity: 0;
+    transform: translateY(160px);
+    pointer-events: none;
+  }
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+
   // .advantages__container
   &__container {
   }
