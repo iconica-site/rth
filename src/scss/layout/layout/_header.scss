@@ -3,7 +3,6 @@
 @use "../../variables/variables";
 
 .header {
-  block-size: variables.$header-height;
   font-family: variables.$font-secondary;
   font-weight: 700;
   font-size: functions.responsive-value(20, 14, $end-breakpoint: 768);
@@ -12,20 +11,10 @@
 
   // .header__wrapper
   &__wrapper {
-    position: fixed;
+    position: absolute;
     inset-block-start: 0;
     inset-inline: 0;
     z-index: 100;
-    background-color: variables.$color-white;
-
-    .scrolled & {
-      background-color: variables.$color-white;
-    }
-
-    @include mixins.prefers-reduced-motion {
-      transition-property: background-color;
-      transition-duration: 0.3s;
-    }
   }
 
   // .header__container
@@ -39,10 +28,6 @@
     align-items: center;
     min-block-size: functions.responsive-value(123, 76, $end-breakpoint: 768, $behavior: "fixed-both");
     padding-block: 5px;
-
-    .scrolled & {
-      min-block-size: functions.responsive-value(61.5, 38, $end-breakpoint: 768, $behavior: "fixed-both");
-    }
 
     @media (max-width: 768px) {
       display: grid;
@@ -63,6 +48,7 @@
 .burger-button {
   position: relative;
   aspect-ratio: 40 / 12;
+  grid-column: 3 / 4;
 
   @media (min-width: #{768 + 0.1px}) {
     display: none;
@@ -176,10 +162,6 @@
     flex: 0 0 auto;
     inline-size: functions.responsive-value(112, 84, $end-breakpoint: 768, $behavior: "fixed-both");
     aspect-ratio: 112 / 80;
-
-    .scrolled & {
-      inline-size: functions.responsive-value(61, 42, $end-breakpoint: 768, $behavior: "fixed-both");
-    }
 
     @include mixins.prefers-reduced-motion {
       transition-property: color;

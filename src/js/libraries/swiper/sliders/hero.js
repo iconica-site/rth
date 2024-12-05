@@ -9,7 +9,6 @@ if (heroSlider) {
     autoplay: {
       delay: 4000,
       disableOnInteraction: false,
-      // pauseOnMouseEnter: true,
     },
     fadeEffect: {
       crossFade: true,
@@ -19,5 +18,6 @@ if (heroSlider) {
       pageUpDown: false,
     },
     effect: "fade",
+    rewind: true,
   });
 }
