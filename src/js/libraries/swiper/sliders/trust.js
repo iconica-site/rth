@@ -7,8 +7,13 @@ const trustSlider = trust?.querySelector(".trust-slider");
 
 if (trustSlider) {
   const swiper = initSlider(trust, trustSlider, {
+    breakpoints: {
+      "768.1": {
+        spaceBetween: 20,
+      },
+    },
     slidesPerView: "auto",
-    spaceBetween: 20,
+    spaceBetween: 8,
     rewind: true,
   });
 }
