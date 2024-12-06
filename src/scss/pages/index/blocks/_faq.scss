@@ -3,7 +3,7 @@
 @use "../../../variables/variables";
 
 .faq {
-  padding-block: functions.responsive-value(150, 85) functions.responsive-value(200, 80);
+  padding-block: functions.responsive-value(150, 40) functions.responsive-value(200, 40);
 
   &:not(.section--animate) {
     pointer-events: none;
@@ -24,7 +24,7 @@
 
   // .faq__title
   &__title {
-    margin-block-end: functions.responsive-value(100, 64);
+    margin-block-end: functions.responsive-value(100, 35);
     font-family: variables.$font-secondary;
     font-weight: 700;
     font-size: functions.responsive-value(50, 48);
@@ -86,6 +86,10 @@
     aspect-ratio: 408 / 283.11;
     margin-inline: auto;
     font-size: 0;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
 
     img {
       object-fit: contain;
