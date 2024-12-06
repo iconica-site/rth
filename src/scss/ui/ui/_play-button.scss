@@ -25,7 +25,6 @@
     background-color: variables.$color-accent;
   }
 
-  &::before,
   &::after {
     content: "";
     position: absolute;
@@ -41,6 +40,6 @@
     position: relative;
     width: calc(18 / 88 * 100%);
     height: calc(24 / 88 * 100%);
-    transform: translateX(3px);
+    transform: translateX(calc(3 / 18 * 100%));
   }
 }
