@@ -3,7 +3,7 @@
 @use "../../../variables/variables";
 
 .compare {
-  padding-block: functions.responsive-value(155, 40) functions.responsive-value(120, 40);
+  padding-block: functions.responsive-value(155, 40) functions.responsive-value(120, 60);
 
   &:not(.section--animate) {
     pointer-events: none;
@@ -99,6 +99,14 @@
     border-radius: 50%;
     overflow: visible;
 
+    &:not(.active) {
+      @media (max-width: 768px) {
+        &::before {
+          opacity: 0;
+        }
+      }
+    }
+
     &.active {
       &::after {
         border-color: variables.$color-a3a3a3;
@@ -124,6 +132,27 @@
       @include mixins.prefers-reduced-motion {
         transition-property: border-color;
         transition-duration: 0.3s;
+      }
+    }
+
+    @media (max-width: 768px) {
+      &::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        inset-block-start: calc(100% + 16px);
+        inset-inline-start: 50%;
+        inline-size: fit-content;
+        block-size: fit-content;
+        font-size: 13px;
+        line-height: 1.08;
+        text-align: center;
+        transform: translateX(-50%);
+        pointer-events: none;
+
+        @include mixins.prefers-reduced-motion {
+          transition-property: opacity;
+          transition-duration: 0.3s;
+        }
       }
     }
   }
