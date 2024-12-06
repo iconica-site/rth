@@ -101,6 +101,12 @@
     aspect-ratio: 240 / 400;
   }
 
+  @include mixins.hover {
+    &::after {
+      block-size: 75%;
+    }
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -113,6 +119,12 @@
     backdrop-filter: blur(functions.responsive-value(40, 20));
     transform: translateZ(0);
     pointer-events: none;
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: block-size;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+    }
   }
 
   // .type-card__image
@@ -121,11 +133,43 @@
     inset: 0;
     z-index: -2;
     font-size: 0;
+
+    @media (hover: hover) {
+      .type-card:hover & {
+        transform: scale(1.1);
+      }
+
+      @include mixins.prefers-reduced-motion {
+        transition-property: transform;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+      }
+    }
   }
 
   // .type-card__content
   &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
     block-size: var(--same-height);
+
+    @media (hover: hover) {
+      .type-card:not(:hover) & {
+        transform: translateY(43px);
+      }
+
+      .type-card:hover & {
+        block-size: auto;
+      }
+
+      @include mixins.prefers-reduced-motion {
+        transition-property: block-size, transform;
+        transition-duration: 0.1s, 0.3s;
+        transition-timing-function: linear, ease-in-out;
+      }
+    }
   }
 
   // .type-card__link
@@ -135,7 +179,6 @@
     align-items: center;
     inline-size: fit-content;
     min-block-size: 28px;
-    margin-block-start: 15px;
     padding-block: 5px;
     padding-inline: 16px;
     font-family: variables.$font-secondary;
@@ -158,8 +201,17 @@
       background-color: variables.$color-accent;
     }
 
-    @media (max-width: 768px) {
-      display: none;
+    @media (hover: hover) {
+      .type-card:not(:hover) & {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+
+      @include mixins.prefers-reduced-motion {
+        transition-property: opacity, transform;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+      }
     }
   }
 }
