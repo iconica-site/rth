@@ -35,7 +35,7 @@
       margin-inline-start: 8px;
     }
 
-    &:not(&.swiper-button-disabled, &.swiper-button-lock) {
+    &:not(.swiper-button-disabled, .swiper-button-lock) {
       cursor: pointer;
 
       @include mixins.hover {

@@ -1,0 +1,402 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+.dialog {
+  background-color: variables.$color-000000-70;
+
+  @media (min-width: #{768 + 0.1px}) {
+    padding: 8px;
+  }
+
+  // .dialog__inner
+  &__inner {
+    inline-size: 100%;
+    min-block-size: 100%;
+    padding-block: functions.responsive-value(50, 40);
+    padding-inline: functions.responsive-value(24, 16);
+    background-color: variables.$color-white;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    @media (min-width: #{768 + 0.1px}) {
+      max-inline-size: 640px;
+      margin-inline-start: auto;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > *:last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  // .dialog__section
+  &__section {
+    &:not(:last-child) {
+      margin-block-end: functions.responsive-value(89, 33);
+    }
+
+    > *:last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  // .dialog__header
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-block-end: 40px;
+
+    .dialog__section & {
+      margin-block-end: 16px;
+    }
+  }
+
+  // .dialog__label
+  &__label {
+    font-size: 16px;
+    color: variables.$color-secondary;
+
+    .dialog__article & {
+      margin-block-end: functions.responsive-value(16, 8);
+    }
+  }
+
+  // .dialog__close
+  &__close {
+    position: relative;
+    flex: 0 0 auto;
+    inline-size: 24px;
+    aspect-ratio: 1 / 1;
+    font-size: 0;
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      color: variables.$color-accent;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      inline-size: 19px;
+      block-size: 2px;
+      background-color: currentColor;
+      border-radius: 4px;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  // .dialog__title
+  &__title {
+    margin-block-end: 40px;
+    font-family: variables.$font-secondary;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1;
+    text-transform: uppercase;
+
+    @media (min-width: #{768 + 0.1px}) {
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    @media (max-width: 768px) {
+      letter-spacing: 0.01em;
+    }
+  }
+
+  // .dialog__slider
+  &__slider {
+    margin-block-end: 40px;
+  }
+
+  // .dialog__article
+  &__article {
+    margin-block-end: functions.responsive-value(40, 33);
+
+    > *:last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  // .dialog__caption
+  &__caption {
+    margin-block-end: 33px;
+    font-family: variables.$font-secondary;
+    font-weight: 700;
+    font-size: functions.responsive-value(32, 24);
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    .dialog__article & {
+      margin-block-end: 33px;
+    }
+
+    @media (min-width: #{768 + 0.1px}) {
+      margin-block-end: 24px;
+    }
+  }
+
+  // .dialog__text
+  &__text {
+    font-size: functions.responsive-value(16, 14);
+    line-height: 1.2;
+    color: variables.$color-372119;
+
+    @media (min-width: #{768 + 0.1px}) {
+      line-height: 1.5;
+      color: variables.$color-secondary;
+    }
+
+    p {
+      &:not(:last-child) {
+        margin-block-end: 33px;
+      }
+    }
+  }
+
+  // .dialog__button
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: 100%;
+    min-block-size: 48px;
+    padding-block: 5px;
+    padding-inline: 42px;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    color: variables.$color-white;
+    background-color: variables.$color-secondary;
+    border-radius: 68px;
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: background-color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      background-color: variables.$color-accent;
+    }
+  }
+}
+
+.dialog-slider {
+  font-size: 0;
+
+  // .dialog-slider__wrapper
+  &__wrapper {
+  }
+
+  // .dialog-slider__slide
+  &__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 592 / 480;
+    background-color: variables.$color-block-background;
+    border-radius: functions.responsive-value(2, 1);
+  }
+
+  // .dialog-slider__image
+  &__image {
+    flex: 0 0 auto;
+    inline-size: calc(244 / 592 * 100%);
+    aspect-ratio: 244 / 342;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  // .dialog-slider__arrow
+  &__arrow {
+    position: absolute;
+    inset-block: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    block-size: 100%;
+    inline-size: functions.responsive-value(40, 26);
+    text-align: center;
+    cursor: pointer;
+
+    .dialog-slider:has(.dialog-slider__arrow--prev.swiper-button-lock):has(
+        .dialog-slider__arrow--next.swiper-button-lock
+      )
+      & {
+      display: none;
+    }
+
+    &.swiper-button-disabled,
+    &.swiper-button-lock {
+      color: variables.$color-303030-20;
+      pointer-events: none;
+    }
+
+    // .dialog-slider__arrow--prev
+    &--prev {
+      inset-inline-start: 0;
+    }
+
+    // .dialog-slider__arrow--next
+    &--next {
+      inset-inline-end: 0;
+    }
+
+    @include mixins.prefers-reduced-motion {
+      transition-property: color;
+      transition-duration: 0.3s;
+    }
+
+    @include mixins.hover {
+      color: variables.$color-accent;
+    }
+
+    svg {
+      width: functions.responsive-value(24, 16);
+      height: functions.responsive-value(24, 16);
+    }
+  }
+
+  // .dialog-slider-slider__pagination
+  &__pagination {
+    --swiper-pagination-color: #{variables.$color-black};
+    --swiper-pagination-bullet-width: 74px;
+    --swiper-pagination-bullet-height: 4px;
+    --swiper-pagination-bullet-border-radius: 15px;
+    --swiper-pagination-bullet-inactive-color: #{variables.$color-000000-20};
+    --swiper-pagination-bullet-inactive-opacity: 1;
+
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: functions.responsive-value(22, 13);
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 4px;
+    pointer-events: none;
+
+    &.swiper-pagination-lock {
+      display: none;
+    }
+
+    .swiper-pagination-bullet {
+      flex: 0 0 auto;
+      pointer-events: all;
+
+      &:not(.swiper-pagination-bullet-active) {
+        @include mixins.hover {
+          background-color: variables.$color-accent;
+        }
+      }
+
+      &.swiper-pagination-bullet-active {
+        cursor: default;
+      }
+
+      @include mixins.prefers-reduced-motion {
+        transition-property: background-color;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+}
+
+.dialog-products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: functions.responsive-value(16, 14);
+
+  @media (min-width: #{768 + 0.1px}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  // .dialog-products__item
+  &__item {
+  }
+
+  // .dialog-products__card
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    block-size: 100%;
+  }
+
+  // .dialog-products__top
+  &__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    font-size: 0;
+    background-color: variables.$color-block-background;
+    border-radius: 2px;
+  }
+
+  // .dialog-products__image
+  &__image {
+    flex: 0 0 auto;
+    inline-size: calc(121 / 200 * 100%);
+    aspect-ratio: 121 / 171;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  // .dialog-products__content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex: 1 1 auto;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  // .dialog-products__title
+  &__title {
+    flex: 1 1 auto;
+    font-family: variables.$font-secondary;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  // .dialog-products__text
+  &__text {
+    font-size: 10px;
+
+    @media (min-width: #{300 + 0.1px}) {
+      font-size: 12px;
+    }
+  }
+}

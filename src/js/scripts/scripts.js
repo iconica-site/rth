@@ -12,3 +12,4 @@ import "./scripts/tabs.js";
 import "./scripts/product-types.js";
 import "./scripts/products-select.js";
 import "./scripts/spoilers.js";
+import "./scripts/dialogs.js";

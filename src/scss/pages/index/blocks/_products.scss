@@ -337,6 +337,7 @@
 }
 
 .product-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: functions.responsive-value(50, 22);
@@ -448,5 +449,12 @@
   // .product-card__text
   &__text {
     max-inline-size: 242px;
+  }
+
+  // .product-card__button
+  &__button {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 }

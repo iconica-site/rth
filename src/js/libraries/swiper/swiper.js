@@ -5,3 +5,4 @@ import "./sliders/products.js";
 import "./sliders/reviews.js";
 import "./sliders/trust.js";
 import "./sliders/useful.js";
+import "./sliders/dialog.js";

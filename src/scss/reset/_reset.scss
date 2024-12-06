@@ -216,7 +216,6 @@ dialog {
   max-inline-size: none;
   block-size: 100%;
   max-block-size: none;
-  overflow: auto;
 
   @include mixins.prefers-reduced-motion {
     transition-property: opacity, visibility;
