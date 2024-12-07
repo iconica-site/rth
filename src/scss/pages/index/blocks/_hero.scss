@@ -49,7 +49,7 @@
     align-items: start;
     justify-content: center;
     gap: functions.responsive-value(70, 40);
-    min-block-size: 100dvb;
+    min-block-size: 100svb;
     padding-block: calc(#{variables.$header-height} + 60px) 34px;
 
     @media (min-width: #{768 + 0.1px}) {
