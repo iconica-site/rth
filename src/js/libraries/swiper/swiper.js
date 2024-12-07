@@ -3,6 +3,7 @@ import "./sliders/type.js";
 import "./sliders/about.js";
 import "./sliders/components.js";
 import "./sliders/products.js";
+import "./sliders/product-images.js";
 import "./sliders/reviews.js";
 import "./sliders/trust.js";
 import "./sliders/useful.js";

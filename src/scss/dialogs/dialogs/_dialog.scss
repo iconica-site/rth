@@ -267,12 +267,28 @@
 
   // .dialog-slider__slide
   &__slide {
+    position: relative;
+    isolation: isolate;
     display: flex;
     justify-content: center;
     align-items: center;
     aspect-ratio: 592 / 480;
     background-color: variables.$color-block-background;
     border-radius: functions.responsive-value(2, 1);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-end: calc(37 / 480 * 100%);
+      inset-inline: 0;
+      z-index: -1;
+      aspect-ratio: 413 / 137;
+      background-image: linear-gradient(360deg, rgba(226, 221, 211, 0) 0%, #ebebeb 100%);
+      border-radius: 100%;
+      filter: blur(50px);
+      transform: translateY(0);
+      pointer-events: none;
+    }
   }
 
   // .dialog-slider__image
@@ -280,6 +296,20 @@
     flex: 0 0 auto;
     inline-size: calc(244 / 592 * 100%);
     aspect-ratio: 244 / 342;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-end: calc(12 / 413 * 100%);
+      inset-inline-start: 50%;
+      z-index: -3;
+      inline-size: calc(220 / 244 * 100%);
+      aspect-ratio: 220 / 30;
+      background-image: radial-gradient(45% 45% at center, rgba(132, 66, 18, 0.4) 0%, rgba(231, 227, 213, 0) 100%);
+      border-radius: 100%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
 
     img {
       object-fit: contain;
@@ -339,6 +369,7 @@
 
   // .dialog-slider-slider__pagination
   &__pagination {
+    --swiper-pagination-bottom: #{functions.responsive-value(22, 13)};
     --swiper-pagination-color: #{variables.$color-black};
     --swiper-pagination-bullet-width: 74px;
     --swiper-pagination-bullet-height: 4px;
@@ -348,13 +379,11 @@
 
     position: absolute;
     inset-inline: 0;
-    inset-block-end: functions.responsive-value(22, 13);
     z-index: 2;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    row-gap: 4px;
+    padding-inline: functions.responsive-value(40, 26);
     pointer-events: none;
 
     &.swiper-pagination-lock {
@@ -362,7 +391,7 @@
     }
 
     .swiper-pagination-bullet {
-      flex: 0 0 auto;
+      flex: 0 1 auto;
       pointer-events: all;
 
       &:not(.swiper-pagination-bullet-active) {
@@ -406,6 +435,7 @@
 
   // .dialog-products__top
   &__top {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -413,6 +443,20 @@
     font-size: 0;
     background-color: variables.$color-block-background;
     border-radius: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-end: calc(37 / 480 * 100%);
+      inset-inline: 0;
+      z-index: -1;
+      aspect-ratio: 413 / 137;
+      background-image: linear-gradient(360deg, rgba(226, 221, 211, 0) 0%, #ebebeb 100%);
+      border-radius: 100%;
+      filter: blur(50px);
+      transform: translateY(0);
+      pointer-events: none;
+    }
   }
 
   // .dialog-products__image
@@ -420,6 +464,20 @@
     flex: 0 0 auto;
     inline-size: calc(121 / 200 * 100%);
     aspect-ratio: 121 / 171;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-end: calc(12 / 413 * 100%);
+      inset-inline-start: 50%;
+      z-index: -3;
+      inline-size: calc(220 / 244 * 100%);
+      aspect-ratio: 220 / 30;
+      background-image: radial-gradient(45% 45% at center, rgba(132, 66, 18, 0.4) 0%, rgba(231, 227, 213, 0) 100%);
+      border-radius: 100%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
 
     img {
       object-fit: contain;
