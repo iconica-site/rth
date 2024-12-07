@@ -5,7 +5,7 @@ import "./scripts/move.js";
 import "./scripts/sections-animate.js";
 import "./scripts/same.js";
 // import "./scripts/about-text.js";
-import "./scripts/components.js";
+// import "./scripts/components.js";
 import "./scripts/range.js";
 import "./scripts/compare.js";
 import "./scripts/tabs.js";
