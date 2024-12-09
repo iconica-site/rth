@@ -1,5 +1,6 @@
 import Swiper from "swiper";
 
+const MIN_WIDTH_768_PX = matchMedia("(min-width: 768.1px)");
 /** @type {HTMLDivElement} */
 const componentsSlider = document.querySelector(".components-slider");
 
@@ -53,6 +54,7 @@ if (componentsSlider) {
 
   /** @param {Swiper} swiper */
   function autoplay(swiper) {
+    const { matches } = MIN_WIDTH_768_PX;
     const { activeIndex, slides, } = swiper;
 
     if (slides[activeIndex + 1]) {
@@ -60,11 +62,17 @@ if (componentsSlider) {
         swiper.slideNext();
       }, 4000);
     } else {
-      componentsInnerIntersectionObserver?.unobserve(componentsSlider);
+      if (matches) {
+        componentsInnerIntersectionObserver?.unobserve(componentsSlider);
 
-      setTimeout(() => {
-        componentsSlider.classList.add("components-slider--finished");
-      }, 4000);
+        setTimeout(() => {
+          componentsSlider.classList.add("components-slider--finished");
+        }, 4000);
+      } else {
+        timeout = setTimeout(() => {
+          swiper.slideTo(0);
+        }, 4000);
+      }
     }
   }
 }
