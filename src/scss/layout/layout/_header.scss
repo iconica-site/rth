@@ -22,6 +22,7 @@
 
     @media (max-width: 768px) {
       transform: translateZ(0);
+      will-change: background-color, backdrop-filter;
 
       .scrolled:not(.burger-active) & {
         background-color: variables.$color-f4f3f1-50;
@@ -80,6 +81,7 @@
     block-size: 2px;
     background-color: currentColor;
     transform: translateX(-50%);
+    will-change: inset-block, inline-size, color, transform;
 
     .burger-active & {
       inline-size: calc(32 / 40 * 100%);
@@ -127,11 +129,13 @@
     padding-block-start: variables.$header-height;
     background-color: variables.$color-f4f3f1-50;
     backdrop-filter: blur(10px);
+    will-change: opacity, visibility, transform;
+    transform: translateY(0);
 
     html:not(.burger-active) & {
       opacity: 0;
       visibility: hidden;
-      transform: translateX(-100%);
+      transform: translateX(-100%) translateY(0);
     }
 
     .header__inner & {
@@ -190,6 +194,8 @@
 
   // .header-nav__link
   &__link {
+    will-change: color;
+
     &.active {
       @media (min-width: #{768 + 0.1px}) {
         color: variables.$color-accent;
@@ -235,6 +241,7 @@
     flex: 0 0 auto;
     inline-size: functions.responsive-value(112, 84, $end-breakpoint: 768, $behavior: "fixed-both");
     aspect-ratio: 112 / 80;
+    will-change: color;
 
     @include mixins.prefers-reduced-motion {
       transition-property: color;
