@@ -1,0 +1,28 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+.button {
+  --outline-color: #{variables.$color-primary};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-block-size: 48px;
+  padding-block: 5px;
+  padding-inline: 42px;
+  font-size: 14px;
+  text-align: center;
+  color: variables.$color-white;
+  background-color: variables.$color-primary;
+  border-radius: 68px;
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: background-color;
+    transition-duration: 0.3s;
+  }
+
+  @include mixins.hover {
+    background-color: variables.$color-accent;
+  }
+}

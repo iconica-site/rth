@@ -494,7 +494,7 @@
       @media (min-width: #{768 + 0.1px}) {
         inset-block-start: cqi(2);
         inset-inline-end: calc(100% + cqi(11.5));
-        inline-size: cqi(105);
+        inline-size: cqi(95);
         border-block: cqi(0.5) solid;
 
         &::after {

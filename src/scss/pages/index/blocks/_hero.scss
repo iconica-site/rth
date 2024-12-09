@@ -107,6 +107,8 @@
 
   // .hero-slide__button
   &__button {
+    --outline-color: #{variables.$color-primary};
+
     display: flex;
     justify-content: center;
     align-items: center;

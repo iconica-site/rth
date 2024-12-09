@@ -101,9 +101,12 @@
     aspect-ratio: 240 / 400;
   }
 
-  @include mixins.hover {
-    &::after {
-      block-size: 75%;
+  @media (hover: hover) {
+    &:hover,
+    &:has(.type-card__link:focus-visible) {
+      &::after {
+        block-size: 75%;
+      }
     }
   }
 
@@ -135,7 +138,8 @@
     font-size: 0;
 
     @media (hover: hover) {
-      .type-card:hover & {
+      .type-card:hover &,
+      .type-card:has(.type-card__link:focus-visible) & {
         transform: scale(1.1);
       }
 
@@ -156,12 +160,19 @@
     block-size: var(--same-height);
 
     @media (hover: hover) {
-      .type-card:not(:hover) & {
+      .type-card:not(:hover, :has(.type-card__link:focus-visible)) & {
         transform: translateY(43px);
       }
 
-      .type-card:hover & {
+      .type-card:hover &,
+      .type-card:has(.type-card__link:focus-visible) & {
         block-size: auto;
+      }
+
+      .type-card:has(.type-card__link:focus-visible) & {
+        @include mixins.prefers-reduced-motion {
+          transition-duration: 0s;
+        }
       }
 
       @include mixins.prefers-reduced-motion {
@@ -202,7 +213,7 @@
     }
 
     @media (hover: hover) {
-      .type-card:not(:hover) & {
+      .type-card:not(:hover, :has(&:focus-visible)) & {
         opacity: 0;
         transform: translateY(100%);
       }
